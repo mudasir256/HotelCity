@@ -22,46 +22,52 @@ export default function BookingWidget() {
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 animate-scale-in">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 text-center mb-6 sm:mb-8">Book Your Stay</h2>
-            <form onSubmit={handleBooking} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <form onSubmit={handleBooking} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <FaCalendarAlt className="inline mr-2 text-primary-600" />
-                  Check-in
+                <label htmlFor="checkin" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
+                  <FaCalendarAlt className="mr-2 text-primary-600 flex-shrink-0" />
+                  <span>Check-in</span>
                 </label>
                 <input
+                  id="checkin"
                   type="date"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
                   min={format(new Date(), 'yyyy-MM-dd')}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  className="w-full px-4 py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 bg-white appearance-none"
                   required
+                  style={{ WebkitAppearance: 'none', fontSize: '16px' }}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <FaCalendarAlt className="inline mr-2 text-primary-600" />
-                  Check-out
+                <label htmlFor="checkout" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
+                  <FaCalendarAlt className="mr-2 text-primary-600 flex-shrink-0" />
+                  <span>Check-out</span>
                 </label>
                 <input
+                  id="checkout"
                   type="date"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
                   min={checkIn}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  className="w-full px-4 py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 bg-white appearance-none"
                   required
+                  style={{ WebkitAppearance: 'none', fontSize: '16px' }}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <FaUsers className="inline mr-2 text-primary-600" />
-                  Guests
+                <label htmlFor="guests" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
+                  <FaUsers className="mr-2 text-primary-600 flex-shrink-0" />
+                  <span>Guests</span>
                 </label>
                 <select
+                  id="guests"
                   value={guests}
                   onChange={(e) => setGuests(Number(e.target.value))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  className="w-full px-4 py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 bg-white appearance-none"
+                  style={{ fontSize: '16px' }}
                 >
                   {[1, 2, 3, 4, 5, 6].map((num) => (
                     <option key={num} value={num}>
@@ -72,13 +78,15 @@ export default function BookingWidget() {
               </div>
 
               <div className="sm:col-span-2 lg:col-span-1">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="rooms" className="block text-sm font-semibold text-gray-700 mb-2">
                   Rooms
                 </label>
                 <select
+                  id="rooms"
                   value={rooms}
                   onChange={(e) => setRooms(Number(e.target.value))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent mb-2 sm:mb-2"
+                  className="w-full px-4 py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 bg-white appearance-none mb-3"
+                  style={{ fontSize: '16px' }}
                 >
                   {[1, 2, 3, 4].map((num) => (
                     <option key={num} value={num}>
@@ -88,7 +96,7 @@ export default function BookingWidget() {
                 </select>
                 <button
                   type="submit"
-                  className="btn-primary w-full flex items-center justify-center group text-sm sm:text-base"
+                  className="btn-primary w-full flex items-center justify-center group text-base py-3.5"
                 >
                   <FaSearch className="mr-2 transition-transform group-hover:rotate-12" />
                   Search
